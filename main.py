@@ -1,7 +1,7 @@
 import customtkinter
 from datetime import date, timedelta
 
-#MADE BY A CLOUD MAIN, FOR PEOPLE WHO CARE TOO MUCH!
+#MADE BY A CLOUD MAIN, FOR PEOPLE WHO CARE TOO MUCH. ~halcyon
 
 #UI CLASS
 class app(customtkinter.CTk): 

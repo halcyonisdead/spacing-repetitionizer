@@ -18,18 +18,29 @@ class app(customtkinter.CTk):
         ui.button = customtkinter.CTkButton(ui.main_frame, text="Studied!", command=ui.on_button_click)
         ui.button.pack(pady=20)
     #BUTTON FUNCTION//REVIEW DATES CALCULATION METHOD
-    def calculate_future_review_dates(ui, date_started):
-        spaced_repetition_algorithm = [3, 7, 14, 30, 60, 120]
+
+    def calculate_first_review_dates(ui, date_started):
         review_dates = []
-        for days in spaced_repetition_algorithm:
-            next_review = date_started + timedelta(days=days)
-            review_dates.append(next_review)
+
+        spaced_repetition_firstday = [2]
+        
+        for days in spaced_repetition_firstday:
+            firstreview = date_started + timedelta(days=days)
+            secondreview = firstreview + timedelta(days=7)
+            thirdreview = secondreview + timedelta(days=21)
+            finalreview = thirdreview + timedelta(days=60)
+            review_dates.extend([firstreview, secondreview, thirdreview, finalreview])
         return review_dates
+        
+    
+    
+
+
     def on_button_click(ui):
         topic_studied = ui.entry.get()
         if topic_studied:
             today = date.today()
-            review_dates = ui.calculate_future_review_dates(today)
+            review_dates = ui.calculate_first_review_dates(today)
             print(f"Added {topic_studied} to topics studied on {today}.")
             print(f"Scheduled future review dates for {topic_studied}: {review_dates}")
             ui.entry.delete("end")
